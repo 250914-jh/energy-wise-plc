@@ -14,7 +14,157 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      alerts: {
+        Row: {
+          acknowledged: boolean
+          created_at: string
+          device_id: string | null
+          device_name: string
+          id: string
+          message: string
+          severity: string
+          type: string
+        }
+        Insert: {
+          acknowledged?: boolean
+          created_at?: string
+          device_id?: string | null
+          device_name: string
+          id?: string
+          message: string
+          severity: string
+          type: string
+        }
+        Update: {
+          acknowledged?: boolean
+          created_at?: string
+          device_id?: string | null
+          device_name?: string
+          id?: string
+          message?: string
+          severity?: string
+          type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "alerts_device_id_fkey"
+            columns: ["device_id"]
+            isOneToOne: false
+            referencedRelation: "devices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      devices: {
+        Row: {
+          created_at: string
+          efficiency: number
+          energy: number
+          id: string
+          name: string
+          opcua_node: string | null
+          power: number
+          runtime: number
+          status: string
+          temperature: number
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          efficiency?: number
+          energy?: number
+          id?: string
+          name: string
+          opcua_node?: string | null
+          power?: number
+          runtime?: number
+          status?: string
+          temperature?: number
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          efficiency?: number
+          energy?: number
+          id?: string
+          name?: string
+          opcua_node?: string | null
+          power?: number
+          runtime?: number
+          status?: string
+          temperature?: number
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      energy_readings: {
+        Row: {
+          device_id: string | null
+          efficiency: number | null
+          energy: number
+          id: string
+          power: number
+          recorded_at: string
+          temperature: number | null
+        }
+        Insert: {
+          device_id?: string | null
+          efficiency?: number | null
+          energy: number
+          id?: string
+          power: number
+          recorded_at?: string
+          temperature?: number | null
+        }
+        Update: {
+          device_id?: string | null
+          efficiency?: number | null
+          energy?: number
+          id?: string
+          power?: number
+          recorded_at?: string
+          temperature?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "energy_readings_device_id_fkey"
+            columns: ["device_id"]
+            isOneToOne: false
+            referencedRelation: "devices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      oee_metrics: {
+        Row: {
+          availability: number
+          id: string
+          oee: number
+          performance: number
+          quality: number
+          recorded_at: string
+        }
+        Insert: {
+          availability?: number
+          id?: string
+          oee?: number
+          performance?: number
+          quality?: number
+          recorded_at?: string
+        }
+        Update: {
+          availability?: number
+          id?: string
+          oee?: number
+          performance?: number
+          quality?: number
+          recorded_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

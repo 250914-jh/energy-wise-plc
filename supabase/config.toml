@@ -1,1 +1,7 @@
 project_id = "ftynbkxqqrigbbwhkult"
+
+[functions.update-devices]
+verify_jwt = false
+
+[functions.simulate-data]
+verify_jwt = false
