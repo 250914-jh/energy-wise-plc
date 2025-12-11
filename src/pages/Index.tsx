@@ -7,11 +7,11 @@ import { OEEGauge } from '@/components/OEEGauge';
 import { AlertsPanel } from '@/components/AlertsPanel';
 import { StatsCard } from '@/components/StatsCard';
 import { SystemTopology } from '@/components/SystemTopology';
-import { useSimulatedData } from '@/hooks/useSimulatedData';
+import { useRealtimeData } from '@/hooks/useRealtimeData';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 const Index = () => {
-  const { devices, energyHistory, alerts, oeeMetrics, totalPower, totalEnergy, acknowledgeAlert } = useSimulatedData();
+  const { devices, energyHistory, alerts, oeeMetrics, totalPower, totalEnergy, acknowledgeAlert } = useRealtimeData();
   const [alertsOpen, setAlertsOpen] = useState(false);
 
   const runningDevices = devices.filter(d => d.status === 'running').length;
